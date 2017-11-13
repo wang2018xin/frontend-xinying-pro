@@ -1,10 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "roadhog server",
+    "start": "cross-env PORT=8001 roadhog server",
     "build": "roadhog build",
-    "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
   },
   "engines": {
     "install-node": "6.9.2"
@@ -41,6 +39,7 @@
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.1",
     "cross-port-killer": "^1.0.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
