@@ -20,7 +20,6 @@ const copyright = 'Copyright 2018 wangxin Code';
 class UserLayout extends React.PureComponent {
   render() {
     const userRouteData = getRouteData('UserLayout');
-    console.log('userRouterData=', userRouteData);
     return (
       <DocumentTitle title="我的title">
         <div>

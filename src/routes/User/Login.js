@@ -37,7 +37,6 @@ export default class Login extends Component {
     const {dispatch} = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // console.log('Received values of form: ', values);
         dispatch({
           type: 'login/accountSubmit',
           payload: values
@@ -47,7 +46,6 @@ export default class Login extends Component {
   }
 
   render() {
-    console.log('login---reader----login----this.props===', this.props);
     const {form, login} = this.props;
     const {getFieldDecorator} = form;
     return (
