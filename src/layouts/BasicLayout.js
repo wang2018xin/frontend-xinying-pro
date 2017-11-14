@@ -70,10 +70,14 @@ export default class BasicLayout extends React.PureComponent {
   }
 
   toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
+    const {collapsed} = this.props;
+    this.props.dispatch({
+      type: 'global/changeLayoutCollapsed',
+      payload: !collapsed
     });
+    //todo：??
   }
+
   onCollapse = (collapsed) => {
     this.props.dispatch({
       type: 'global/changeLayoutCollapsed',
@@ -176,10 +180,10 @@ export default class BasicLayout extends React.PureComponent {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
+          <Header className={styles.header}>
             <Icon
               className={styles.trigger}
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
           </Header>
