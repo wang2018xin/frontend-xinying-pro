@@ -24,7 +24,11 @@ export default class PageHeader extends React.PureComponent {
   render() {
     console.log('this.props==', this.props);
     const {routes, params, location, breadcrumbNameMap} = this.getBreadcrumbProps();
-    console.log('this.getBreadcrumbProps()', this.getBreadcrumbProps());
+    const {
+      title, logo, action, content, extraContent, breadcrumbList, tabList,
+      className, linkElement = 'a',
+    } = this.props;
+
     return (
       <div>PageHeader...</div>
     );
