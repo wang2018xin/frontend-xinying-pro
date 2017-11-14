@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Menu, Icon, Avatar, Dropdown, Tag, message, Spin } from 'antd';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
@@ -43,6 +44,12 @@ const query = {
 }))
 
 export default class BasicLayout extends React.PureComponent {
+
+  static childContextTypes = {
+    location: PropTypes.object,
+    breadcrumbNameMap: PropTypes.object,
+  }
+
   constructor(props) {
     super(props);
     this.menus = getNavData().reduce((arr, current) => arr.concat(current.children), []);
@@ -55,6 +62,17 @@ export default class BasicLayout extends React.PureComponent {
     this.props.dispatch({
       type: 'user/fetchCurrent'
     })
+  }
+
+  getChildContext() {
+    const {location} = this.props;
+    const routeData = getRouteData('BasicLayout');
+    const menuData = getNavData().reduce((arr, current) => arr.concat(current.children), []);
+    const breadcrumbNameMap = {};
+    routeData.concat(menuData).forEach((item) => {
+      breadcrumbNameMap[item.path] = item.name;
+    });
+    return {location, breadcrumbNameMap};
   }
 
   getDefaultCollapsedSubMenus(props) {
@@ -160,6 +178,7 @@ export default class BasicLayout extends React.PureComponent {
     //   });
     // }
   }
+
 
   render() {
     const {currentUser, collapsed, fetchingNotices} = this.props;
