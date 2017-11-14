@@ -174,7 +174,6 @@ export default class BasicLayout extends React.PureComponent {
     const menuProps = collapsed ? {} : {
       openKeys: this.state.openKeys,
     };
-    console.log('currentUser', currentUser)
     const layout = (
       <Layout>
         <Sider
