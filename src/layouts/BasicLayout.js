@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Avatar, Dropdown, Tag, message, Spin } from 'antd';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import classNames from 'classnames';
@@ -49,6 +49,12 @@ export default class BasicLayout extends React.PureComponent {
     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     };
+  }
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'user/fetchCurrent'
+    })
   }
 
   getDefaultCollapsedSubMenus(props) {
@@ -146,11 +152,29 @@ export default class BasicLayout extends React.PureComponent {
     });
   }
 
+  onMenuClick = ({key}) => {
+    console.log('onMenuClick', key);
+    // if (key === 'logout') {
+    //   this.props.dispatch({
+    //     type: 'login/logout',
+    //   });
+    // }
+  }
+
   render() {
     const {currentUser, collapsed, fetchingNotices} = this.props;
+    const menu = (
+      <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
+        <Menu.Item disabled><Icon type="user"/>个人中心</Menu.Item>
+        <Menu.Item disabled><Icon type="setting"/>设置</Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="logout"><Icon type="logout"/>退出登录</Menu.Item>
+      </Menu>
+    );
     const menuProps = collapsed ? {} : {
       openKeys: this.state.openKeys,
     };
+    console.log('currentUser', currentUser)
     const layout = (
       <Layout>
         <Sider
@@ -186,6 +210,19 @@ export default class BasicLayout extends React.PureComponent {
               type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+            <div className={styles.right}>
+              {
+                currentUser.name ?
+                  (
+                    <Dropdown overlay={menu}>
+                          <span className={`${styles.action} ${styles.account}`}>
+                            <Avatar size="small" className={styles.avatar} src={currentUser.avatar}/>
+                            {currentUser.name}
+                          </span>
+                    </Dropdown>
+                  ) : <Spin size="small" style={{ marginLeft: 8 }}/>
+              }
+            </div>
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
             <Switch>
