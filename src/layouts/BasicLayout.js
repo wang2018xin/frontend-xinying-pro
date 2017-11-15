@@ -242,7 +242,7 @@ export default class BasicLayout extends React.PureComponent {
               }
             </div>
           </Header>
-          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+          <Content style={{ margin: '24px 24px 0', height: '100%' }}>
             <Switch>
               {
                 getRouteData('BasicLayout').map(item =>

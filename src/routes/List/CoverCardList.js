@@ -1,9 +1,13 @@
 import React from 'react';
+import PageHeaderLayout from '../../layouts/PageHeaderLayout';
+
 
 class CoverCardList extends React.Component {
   render() {
     return (
-      <div>CoverCardList...</div>
+      <PageHeaderLayout title="car表格">
+        CoverCardList...
+      </PageHeaderLayout>
     );
   }
 }

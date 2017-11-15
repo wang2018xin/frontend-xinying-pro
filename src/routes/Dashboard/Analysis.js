@@ -1,9 +1,12 @@
 import React from 'react';
+import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 class Analysis extends React.Component {
   render() {
     return (
-      <div>Analysis...</div>
+      <PageHeaderLayout title="Analysis-title">
+        Analysis...
+      </PageHeaderLayout>
     );
   }
 }
