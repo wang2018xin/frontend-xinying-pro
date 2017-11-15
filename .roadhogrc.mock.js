@@ -1,4 +1,5 @@
 import { format, delay } from 'roadhog-api-doc';
+import { getRule, postRule } from './mock/rule';
 
 const proxy = {
   'GET /api/currentUser': {
@@ -20,6 +21,7 @@ const proxy = {
     const {password, userName} = req.body;
     res.send({status: password === '888888' && userName === 'admin' ? 'ok' : 'error', type: 'account'});
   },
+  'GET /api/rule': getRule
 }
 
 

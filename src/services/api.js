@@ -7,3 +7,7 @@ export async function fakeAccountLogin(params) {
     body: params,
   });
 }
+
+export async function queryRule(params) {
+  return request(`/api/rule?${stringify(params)}`);
+}

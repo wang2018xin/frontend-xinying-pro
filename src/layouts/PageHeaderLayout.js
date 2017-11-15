@@ -7,7 +7,6 @@ import styles from './PageHeaderLayout.less';
 class PageHeaderLayout extends React.Component {
   render() {
     const {children, wrapperClassName, top, ...restProps} = this.props;
-    console.log('PageHeaderLayout', this.props);
     return (
       <div style={{ margin: '-24px -24px 0' }} className={wrapperClassName}>
         <PageHeader {...restProps} linkElement={Link}/>
