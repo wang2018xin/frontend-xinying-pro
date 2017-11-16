@@ -5,6 +5,12 @@ import Analysis from '../routes/Dashboard/Analysis';
 import Monitor from '../routes/Dashboard/Monitor';
 import Workplace from '../routes/Dashboard/Workplace';
 
+import BasicForm from '../routes/Forms/BasicForm';
+import AdvancedForm from '../routes/Forms/AdvancedForm';
+import StepForm from '../routes/Forms/StepForm';
+import Step2 from '../routes/Forms/StepForm/Step2';
+import Step3 from '../routes/Forms/StepForm/Step3';
+
 import TableList from '../routes/List/TableList';
 import CoverCardList from '../routes/List/CoverCardList';
 
@@ -36,6 +42,32 @@ const data = [
             name: '工作台',
             path: 'workplace',
             component: Workplace,
+          }
+        ],
+      }, {
+        name: '表单页',
+        path: 'form',
+        icon: 'form',
+        children: [
+          {
+            name: '基础表单',
+            path: 'basic-form',
+            component: BasicForm,
+          }, {
+            name: '分步表单',
+            path: 'step-form',
+            component: StepForm,
+            children: [{
+              path: 'confirm',
+              component: Step2,
+            }, {
+              path: 'result',
+              component: Step3,
+            }],
+          }, {
+            name: '高级表单',
+            path: 'advanced-form',
+            component: AdvancedForm,
           }
         ],
       }, {

@@ -21,7 +21,12 @@ const proxy = {
     const {password, userName} = req.body;
     res.send({status: password === '888888' && userName === 'admin' ? 'ok' : 'error', type: 'account'});
   },
-  'GET /api/rule': getRule
+  'GET /api/rule': getRule,
+  'POST /api/forms': (req, res) => {
+    res.send({
+      'message': 'ok'
+    });
+  },
 }
 
 

@@ -11,3 +11,10 @@ export async function fakeAccountLogin(params) {
 export async function queryRule(params) {
   return request(`/api/rule?${stringify(params)}`);
 }
+
+export async function fakeSubmitForm(params) {
+  return request('/api/forms', {
+    method: 'POST',
+    body: params,
+  });
+}
